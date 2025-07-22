@@ -152,7 +152,7 @@ namespace ui
 		// UI Data
 		bool visible;
 
-		color color;
+		color mycolor;
 		float depth;
 
 		corner cornerPoint;
@@ -184,7 +184,7 @@ namespace ui
 		std::string string;
 		float pixelSize;
 
-		color color;
+		color mycolor;
 		float depth;
 
 		corner cornerPoint;
@@ -396,7 +396,7 @@ namespace ui
 	{
 		ui::solid solidUI;
 
-		solidUI.color = color;
+		solidUI.mycolor = color;
 		solidUI.depth = depth;
 		solidUI.anchorPoint = anchor;
 		solidUI.cornerPoint = corner;
@@ -492,7 +492,7 @@ namespace ui
 			if (sol.visible)
 			{
 				// Maybe put if statement if this needs to be sorted
-				glUniform4f(solidColorUniform, sol.color.r / 255.0f, sol.color.g / 255.0f, sol.color.b / 255.0f, sol.color.a / 255.0f);
+				glUniform4f(solidColorUniform, sol.mycolor.r / 255.0f, sol.mycolor.g / 255.0f, sol.mycolor.b / 255.0f, sol.mycolor.a / 255.0f);
 
 				glUniform2f(solidPositionUniform, sol.scalePosX, sol.scalePosY);
 				glUniform2f(solidSizeUniform, sol.scaleSizeX, sol.scaleSizeY);
@@ -769,7 +769,7 @@ namespace ui
 		text textUI;
 
 		textUI.string = str;
-		textUI.color = color;
+		textUI.mycolor = color;
 		textUI.depth = depth;
 		textUI.pixelSize = pixelSize;
 		textUI.anchorPoint = anchor;
@@ -947,7 +947,7 @@ namespace ui
 		{
 			if (tex.visible)
 			{
-				glUniform4f(textColorUniform, tex.color.r / 255.0f, tex.color.g / 255.0f, tex.color.b / 255.0f, tex.color.a / 255.0f);
+				glUniform4f(textColorUniform, tex.mycolor.r / 255.0f, tex.mycolor.g / 255.0f, tex.mycolor.b / 255.0f, tex.mycolor.a / 255.0f);
 				glUniform1f(textDepthUniform, tex.depth);
 
 				glBindTexture(GL_TEXTURE_2D, fontTexture);
@@ -1031,7 +1031,7 @@ namespace ui
 			currentCol = defaultCol;
 		}
 
-		sol->color = currentCol;
+		sol->mycolor = currentCol;
 	}
 
 	void button::EnableRenderer(bool enable)

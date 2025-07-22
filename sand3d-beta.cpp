@@ -13,10 +13,10 @@
 #include <GLFW/glfw3.h>
 #define GLM_SWIZZLE
 #define GLM_ENABLE_EXPERIMENTAL
-#include <glm.hpp>
-#include <gtc/type_ptr.hpp>
-#include <gtx/string_cast.hpp>
-#include <gtx/euler_angles.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/string_cast.hpp>
+#include <glm/gtx/euler_angles.hpp>
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
@@ -58,7 +58,7 @@ int main()
 	{
 		// Make screen black and draw splash
 		glClear(GL_COLOR_BUFFER_BIT);
-		ui::solids[ui::splashScreen].color.a = 255 * pow(std::min(1.0, time / 2.0), 2); // quadratic looks nicer than linear
+		ui::solids[ui::splashScreen].mycolor.a = 255 * pow(std::min(1.0, time / 2.0), 2); // quadratic looks nicer than linear
 		ui::DrawUI();
 
 		glfwSwapBuffers(game::window);
@@ -218,9 +218,9 @@ void game::ProcessInput(GLFWwindow* window)
 	glUniformMatrix4fv(simulation::uniformView, 1, GL_FALSE, glm::value_ptr(simulation::view));
 #endif
 
-	game::front = (viewMatrix * glm::vec4(0, 0, 1, 0)).xyz;
-	game::right = (viewMatrix * glm::vec4(1, 0, 0, 0)).xyz;
-	game::up = (viewMatrix * glm::vec4(0, 1, 0, 0)).xyz;
+	game::front = (viewMatrix * glm::vec4(0, 0, 1, 0)).xyz();
+	game::right = (viewMatrix * glm::vec4(1, 0, 0, 0)).xyz();
+	game::up = (viewMatrix * glm::vec4(0, 1, 0, 0)).xyz();
 
 	// speed per seconds / frames per second
 	float deltaSpeed = speed * deltaTime;

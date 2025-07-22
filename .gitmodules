@@ -1,0 +1,9 @@
+[submodule "glad"]
+	path = glad
+	url = https://github.com/premake-libs/glad
+[submodule "FastNoiseLite"]
+	path = FastNoiseLite
+	url = https://github.com/Auburn/FastNoiseLite
+[submodule "stb"]
+	path = stb
+	url = https://github.com/nothings/stb
